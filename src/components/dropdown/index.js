@@ -17,7 +17,6 @@ import { TextField } from 'react-native-material-textfield';
 
 import DropdownItem from '../item';
 import styles from './styles';
-import {textColor} from "react-native-calendars/src/style";
 
 export default class Dropdown extends PureComponent {
   static defaultProps = {
