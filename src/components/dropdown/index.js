@@ -17,6 +17,7 @@ import { TextField } from 'react-native-material-textfield';
 
 import DropdownItem from '../item';
 import styles from './styles';
+import {textColor} from "react-native-calendars/src/style";
 
 export default class Dropdown extends PureComponent {
   static defaultProps = {
@@ -504,17 +505,7 @@ export default class Dropdown extends PureComponent {
       String(title);
 
     return (
-      <TextField
-        label=''
-        labelHeight={dropdownOffset.top - Platform.select({ ios: 1, android: 2 })}
-
-        {...props}
-
-        value={title}
-        editable={false}
-        onChangeText={undefined}
-        renderAccessory={renderAccessory}
-      />
+      <Text style={{flex:1},this.props.itemTextStyle}>{title}</Text>
     );
   }
 
@@ -727,7 +718,7 @@ export default class Dropdown extends PureComponent {
     return (
       <View onLayout={this.onLayout} ref={this.updateContainerRef} style={containerStyle}>
         <TouchableWithoutFeedback {...touchableProps}>
-          <View pointerEvents='box-only'>
+          <View style={containerStyle} pointerEvents='box-only'>
             {this.renderBase(props)}
             {this.renderRipple()}
           </View>
@@ -741,6 +732,7 @@ export default class Dropdown extends PureComponent {
         >
           <Animated.View
             style={[styles.overlay, overlayStyle, overlayStyleOverrides]}
+            useNativeDriver={true}
             onStartShouldSetResponder={() => true}
             onResponderRelease={this.blur}
           >
