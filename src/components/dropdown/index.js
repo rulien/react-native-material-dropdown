@@ -188,7 +188,7 @@ export default class Dropdown extends PureComponent {
     };
   }
 
-  componentWillReceiveProps({ value }) {
+  componentDidUpdate({ value }) {
     if (value !== this.props.value) {
       this.setState({ value });
     }
@@ -299,7 +299,7 @@ export default class Dropdown extends PureComponent {
             .timing(opacity, {
               duration: animationDuration,
               toValue: 1,
-              useNativeDriver,
+              useNativeDriver:true,
             })
             .start(() => {
               if (this.mounted && 'ios' === Platform.OS) {
@@ -323,7 +323,7 @@ export default class Dropdown extends PureComponent {
       .timing(opacity, {
         duration: animationDuration,
         toValue: 0,
-        useNativeDriver,
+        useNativeDriver:true,
       })
       .start(() => {
         this.focused = false;
